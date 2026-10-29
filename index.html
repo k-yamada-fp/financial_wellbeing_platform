@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サンプル株式会社｜従業員向け 金融サポートサイト（体験用デモ）</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/household.css">
+<link rel="stylesheet" href="css/household-print.css">
+<script src="js/household/data-2026-v22.demo.js" defer></script>
+<script src="js/household/calc-engine.js" defer></script>
+<script src="js/household/charts.js" defer></script>
+<script src="js/household/report.js" defer></script>
+<script src="js/household/ui.js" defer></script>
+<script src="js/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#view">本文へスキップ</a>
+
+<header class="site-header">
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="sidebar">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+  </button>
+  <a class="brand" href="#home">
+    <span class="brand-name">サンプル株式会社</span>
+    <span class="brand-sub">従業員向け 金融サポートサイト</span>
+  </a>
+    <span class="demo-badge" title="本サイトは提案用のサンプル画面です">体験用デモ</span>
+    <div class="header-right">
+      <button class="icon-btn bell" id="bellBtn" type="button" aria-label="通知 お知らせが1件あります">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10.2a5.5 5.5 0 0 1 11 0v3.6l1.5 2.2H5l1.5-2.2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.8 19a2.3 2.3 0 0 0 4.4 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <span class="bell-dot" aria-hidden="true">1</span>
+      </button>
+      <button class="btn-outline" id="endDemoBtn" type="button">デモを終了</button>
+    </div>
+</header>
+
+<div class="layout">
+  <nav class="sidebar" id="sidebar" aria-label="メインメニュー">
+    <ul>
+      <li><a href="#home" data-nav="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10.5 12 3.8l8 6.7V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>ホーム</span></a></li>
+      <li><a href="#household" data-nav="household"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V11M9.4 20V7M14.8 20v-6.5M20.2 20V4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>わが家の未来</span></a></li>
+      <li><a href="#simulation" data-nav="simulation"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7.5 8.5h9M7.5 12.5h2.5M13 12.5h2.5M7.5 16.5h2.5M13 16.5h2.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>ミニシミュレーション</span></a></li>
+      <li><a href="#learn" data-nav="learn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.4c2.6-1 5.2-.6 8 1.1v13c-2.8-1.7-5.4-2.1-8-1.1zM20 5.4c-2.6-1-5.2-.6-8 1.1v13c2.8-1.7 5.4-2.1 8-1.1z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>学ぶ</span></a></li>
+      <li><a href="#consult" data-nav="consult"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12.2c0 3.6-3.8 6.5-8.5 6.5-1 0-2-.1-2.9-.4L4.5 20l.9-3.1C4 15.7 3.5 14.2 3.5 12.2c0-3.6 3.8-6.5 8.5-6.5s8.5 2.9 8.5 6.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><span>相談する</span></a></li>
+      <li><a href="#faq" data-nav="faq"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9.7 9.6a2.4 2.4 0 1 1 3.4 2.2c-.7.3-1.1.8-1.1 1.6v.3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 16.6v.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg><span>よくある質問</span></a></li>
+    </ul>
+    <p class="sidebar-note">デモ画面<br>操作内容は保存・送信されません</p>
+  </nav>
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+
+  <div class="main-wrap">
+    <main id="view" tabindex="-1" aria-live="off">
+      <noscript><p class="noscript">このデモを表示するにはJavaScriptを有効にしてください。</p></noscript>
+    </main>
+    <footer class="site-footer">
+      <p class="footer-main">※ 本サイトは提案用のサンプル画面です。会社・お知らせ・イベントは架空の例です。実際の利用開始日、対象者、予約方法、サービス内容は正式導入時にご案内します。</p>
+      <p>試算は将来の成果や給付額を保証しません。入力内容・計算結果はブラウザ内だけで処理され、外部への送信や保存は行いません。</p>
+      <p>企業型DCの導入・継続支援と、従業員向け金融教育・FP個別相談を一体で提供する構想の操作見本です。</p>
+      <p class="footer-copy">サンプル株式会社　従業員向け 金融サポートサイト（体験用デモ）</p>
+    </footer>
+  </div>
+</div>
+
+<div class="modal-root" id="modalRoot" hidden>
+  <div class="modal-backdrop" data-close="1"></div>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" tabindex="-1">
+    <button class="modal-x" type="button" data-close="1" aria-label="閉じる">×</button>
+    <h2 id="modalTitle"></h2>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions" id="modalActions"></div>
+  </div>
+</div>
+<template id="tplHousehold">
+<div class="household-page">
+  <nav class="crumbs" aria-label="パンくず">
+    <a href="#home">ホーム</a><span aria-hidden="true">›</span><span aria-current="page">わが家の未来シミュレーション</span>
+  </nav>
+  <div class="household-topbar">
+    <h1 class="household-title"><a href="#household" id="brandHome">わが家の未来シミュレーション</a></h1>
+    <div class="household-topbar-actions">
+      <button class="hh-btn hh-btn-ghost" type="button" id="btnRestart" hidden>最初からやり直す</button>
+      <a class="hh-btn hh-btn-ghost" href="#home">ホームに戻る</a>
+    </div>
+  </div>
+  <p class="household-note">※ 入力内容はブラウザ内だけで扱い、保存・送信はしません。別のページへ移動すると入力は保持されません。</p>
+  <div class="household-app" id="householdApp">
+<!-- ============================================================
+      画面1：コース選択
+      ============================================================ -->
+      <section class="screen screen-start is-active" id="screenStart" data-screen-label="01 コース選択">
+      <div class="start-wrap">
+      <div class="start-copy">
+      <p class="eyebrow">企業型DC導入のご提案にあたって</p>
+      <h2 class="start-title">わが家の将来を、<br>5分で見える化。</h2>
+      <p class="start-lead">
+      毎月の収支と、これからの教育費・老後のお金をまとめて概算します。
+      最後に、企業型DCやNISA等で積み立てた場合との違いを比べられます。
+      </p>
+      <fieldset class="course-picker" id="coursePicker">
+      <legend class="sr-only">シミュレーションするコースを選んでください</legend>
+      <label class="course-card" data-course="A">
+      <input type="radio" name="course" value="A" hidden>
+      <span class="course-tag">コース A</span>
+      <strong class="course-name">65歳までの家計と資産形成</strong>
+      <span class="course-desc">今から定年まで、教育費と積立を踏まえて資産がどう育つか。</span>
+      <span class="course-point">65歳時点の金融資産（DC込み）を確認</span>
+      <span class="course-check" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      </label>
+      <label class="course-card" data-course="B">
+      <input type="radio" name="course" value="B" hidden>
+      <span class="course-tag">コース B</span>
+      <strong class="course-name">90歳までの家計と老後資金</strong>
+      <span class="course-desc">Aの内容に加えて、公的年金と老後の取り崩しまで。</span>
+      <span class="course-point">65歳時点に加え、90歳時点の資産も確認</span>
+      <span class="course-check" aria-hidden="true">
+      <svg viewBox="0 0 16 16" width="14" height="14"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      </label>
+      </fieldset>
+      <div class="start-actions">
+      <button class="btn btn-primary btn-lg" id="btnStart" disabled>
+      このコースで、入力へ進む
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path d="M4 10h11M11 5.5l4.5 4.5L11 14.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <p class="start-note">登録・ログインは不要です。入力内容はこの端末の画面内だけで扱います。</p>
+      </div>
+      </div>
+      <figure class="start-visual" aria-hidden="true">
+      <svg viewBox="0 0 460 380" width="100%" preserveAspectRatio="xMidYMid meet">
+      <defs>
+      <linearGradient id="gArea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2F668A" stop-opacity=".20"/>
+      <stop offset="100%" stop-color="#2F668A" stop-opacity=".02"/>
+      </linearGradient>
+      </defs>
+      <g stroke="#E2EAEF" stroke-width="1">
+      <line x1="40" y1="60" x2="430" y2="60"/>
+      <line x1="40" y1="130" x2="430" y2="130"/>
+      <line x1="40" y1="200" x2="430" y2="200"/>
+      <line x1="40" y1="270" x2="430" y2="270"/>
+      </g>
+      <path d="M40 300 C120 292 150 258 200 232 C250 206 268 168 310 128 C340 100 372 96 430 84 L430 320 L40 320 Z" fill="url(#gArea)"/>
+      <path d="M40 300 C120 292 150 258 200 232 C250 206 268 168 310 128 C340 100 372 96 430 84"
+      fill="none" stroke="#2F668A" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M40 300 C120 296 150 276 200 262 C250 248 268 232 310 210 C340 194 372 190 430 184"
+      fill="none" stroke="#8FA2B1" stroke-width="1.8" stroke-dasharray="5 5" stroke-linecap="round"/>
+      <line x1="310" y1="40" x2="310" y2="320" stroke="#2F668A" stroke-opacity=".28" stroke-width="1" stroke-dasharray="4 4"/>
+      <g font-family="inherit" font-size="13" fill="#50657A">
+      <text x="40" y="342">いま</text>
+      <text x="294" y="342">65歳</text>
+      <text x="404" y="342">90歳</text>
+      </g>
+      <circle cx="310" cy="128" r="4.5" fill="#fff" stroke="#2F668A" stroke-width="2.4"/>
+      <g font-family="inherit" font-size="13.5" fill="#173B60">
+      <rect x="238" y="86" width="150" height="32" rx="6" fill="#fff" stroke="#DCE5EA"/>
+      <text x="250" y="106">積み立てた場合</text>
+      <rect x="196" y="222" width="112" height="28" rx="6" fill="#fff" stroke="#DCE5EA"/>
+      <text x="207" y="240" fill="#50657A">現状のまま</text>
+      </g>
+      </svg>
+      <figcaption>※イメージです。実際の結果は入力条件により変わります。</figcaption>
+      </figure>
+      </div>
+      </section>
+      <!-- ============================================================
+      画面2：入力
+      ============================================================ -->
+      <section class="screen screen-input" id="screenInput" data-screen-label="02 基本情報の入力" hidden>
+      <div class="input-wrap">
+      <div class="input-main">
+      <div class="sec-head">
+      <p class="eyebrow">STEP 1 / 2</p>
+      <h2 class="sec-title">家族と家計のことを、少しだけ。</h2>
+      <p class="sec-desc">わかる範囲で構いません。金額は「万円」で入力してください。</p>
+      </div>
+      <!-- 家族 -->
+      <section class="card form-card" data-section="family">
+      <header class="card-head">
+      <h3>ご家族</h3>
+      <span class="card-hint">年齢は現在の満年齢</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label">本人の年齢</span>
+      <span class="input-unit">
+      <input type="number" id="headAge" min="20" max="60" step="1" value="38" inputmode="numeric">
+      <span class="unit">歳</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">配偶者</span>
+      <span class="seg" id="segSpouse">
+      <button type="button" class="seg-btn is-on" data-val="1">あり</button>
+      <button type="button" class="seg-btn" data-val="0">なし</button>
+      </span>
+      </label>
+      <label class="field" id="spouseAgeField">
+      <span class="field-label">配偶者の年齢</span>
+      <span class="input-unit">
+      <input type="number" id="spouseAge" min="20" max="70" step="1" value="36" inputmode="numeric">
+      <span class="unit">歳</span>
+      </span>
+      </label>
+      </div>
+      <div class="sub-block">
+      <div class="sub-head">
+      <h4>お子さま</h4>
+      <div class="kid-add">
+      <button type="button" class="btn btn-line btn-sm" id="btnAddKid">＋ 子どもを追加</button>
+      </div>
+      </div>
+      <div id="kidList" class="kid-list"></div>
+      <p class="tiny-note">生まれる予定のお子さまは、年齢にマイナス（例：−1歳＝来年誕生）を入れてください。</p>
+      </div>
+      </section>
+      <!-- 収入 -->
+      <section class="card form-card" data-section="income">
+      <header class="card-head">
+      <h3>収入</h3>
+      <span class="card-hint">手取り（社会保険料・税を引いた後）で入力</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label">本人の手取り月収</span>
+      <span class="input-unit">
+      <input type="number" id="headMonthlyNet" min="0" step="1" value="30" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field" id="spouseIncomeField">
+      <span class="field-label">配偶者の手取り月収</span>
+      <span class="input-unit">
+      <input type="number" id="spouseMonthlyNet" min="0" step="1" value="10" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">本人のボーナス等（年間）</span>
+      <span class="input-unit">
+      <input type="number" id="headBonus" min="0" step="10" value="80" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field" id="spouseBonusField">
+      <span class="field-label">配偶者のボーナス等（年間）</span>
+      <span class="input-unit">
+      <input type="number" id="spouseBonus" min="0" step="10" value="0" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      </div>
+      </section>
+      <!-- 支出 -->
+      <section class="card form-card" data-section="spending">
+      <header class="card-head">
+      <h3>支出</h3>
+      <span class="card-hint">毎月の生活費</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label">毎月の生活費</span>
+      <span class="input-unit">
+      <input type="number" id="livingMonthly" min="0" step="1" value="22" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">年間の特別支出（旅行・保険など）</span>
+      <span class="input-unit">
+      <input type="number" id="annualSpecial" min="0" step="5" value="30" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      </div>
+      </section>
+      <!-- 資産 -->
+      <section class="card form-card" data-section="assets">
+      <header class="card-head">
+      <h3>いま持っている資産</h3>
+      <span class="card-hint">3つの区分で管理します</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label"><i class="dot dot-cash"></i>預貯金</span>
+      <span class="input-unit">
+      <input type="number" id="cash" min="0" step="10" value="500" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label"><i class="dot dot-invest"></i>NISA等の運用資産</span>
+      <span class="input-unit">
+      <input type="number" id="invest" min="0" step="10" value="150" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label"><i class="dot dot-dc"></i>企業型DC（既存分）</span>
+      <span class="input-unit">
+      <input type="number" id="dcExisting" min="0" step="10" value="80" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">現在のDC掛金（給与から）</span>
+      <span class="input-unit">
+      <input type="number" id="existingDCMonthly" min="0" step="0.1" value="0" inputmode="decimal">
+      <span class="unit">万円/月</span>
+      </span>
+      </label>
+      <label class="field span-2">
+      <span class="field-label">現在のNISA等の積立額</span>
+      <span class="input-unit">
+      <input type="number" id="currentNisaMonthly" min="0" step="0.5" value="0" inputmode="decimal">
+      <span class="unit">万円/月</span>
+      </span>
+      <span class="field-help">入力済みの手取りは「掛金控除後」として扱い、二重に差し引きません。</span>
+      </label>
+      </div>
+      </section>
+      <!-- 教育費 -->
+      <section class="card form-card" data-section="education">
+      <header class="card-head">
+      <h3>教育費</h3>
+      <span class="card-hint">2026-v22の費用モデルを使用</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label">塾・習い事</span>
+      <span class="seg" id="segActivity">
+      <button type="button" class="seg-btn" data-val="none">含めない</button>
+      <button type="button" class="seg-btn is-on" data-val="standard">標準</button>
+      <button type="button" class="seg-btn" data-val="high">高額</button>
+      </span>
+      </label>
+      <label class="check-line">
+      <input type="checkbox" id="educationInLiving">
+      <span>教育費・塾代は毎月の生活費に含まれている</span>
+      </label>
+      </div>
+      <p class="tiny-note">チェックすると、家計収支では教育費を二重に計上しません（教育費の目安は結果画面に表示します）。</p>
+      <div id="eduKidList" class="edu-kid-list"></div>
+      </section>
+      <!-- 老後の前提（Bのみ） -->
+      <section class="card form-card" data-section="pension" id="pensionSection" hidden>
+      <header class="card-head">
+      <h3>老後の前提（コースB）</h3>
+      <span class="card-hint">年金は「参考モデル」で推計します</span>
+      </header>
+      <div class="field-grid">
+      <label class="field">
+      <span class="field-label">退職後の生活費</span>
+      <span class="input-unit">
+      <input type="number" id="postRetireLiving" min="0" step="1" value="20" inputmode="numeric">
+      <span class="unit">万円/月</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">年金からの天引き（税・社会保険）の目安</span>
+      <span class="input-unit">
+      <input type="number" id="pensionDeduction" min="0" max="40" step="1" value="10" inputmode="numeric">
+      <span class="unit">%</span>
+      </span>
+      </label>
+      <label class="field">
+      <span class="field-label">本人の働き方（加入履歴の仮置き）</span>
+      <select id="headWork">
+      <option value="full">会社員（フルタイム）</option>
+      <option value="part">会社員（パート・短時間）</option>
+      <option value="self">自営業・フリーランス</option>
+      <option value="none">専業・収入なし</option>
+      </select>
+      </label>
+      <label class="field">
+      <span class="field-label">本人の額面年収（目安）</span>
+      <span class="input-unit">
+      <input type="number" id="headGross" min="0" step="10" value="600" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      <span class="field-help">手取りからの目安を自動で入れる場合は<a href="#" id="linkAutoGross">こちら</a></span>
+      </label>
+      <label class="field" id="spouseWorkField">
+      <span class="field-label">配偶者の働き方</span>
+      <select id="spouseWork">
+      <option value="full">会社員（フルタイム）</option>
+      <option value="part" selected>会社員（パート・短時間）</option>
+      <option value="self">自営業・フリーランス</option>
+      <option value="none">専業・収入なし</option>
+      </select>
+      </label>
+      <label class="field" id="spouseGrossField">
+      <span class="field-label">配偶者の額面年収（目安）</span>
+      <span class="input-unit">
+      <input type="number" id="spouseGross" min="0" step="10" value="200" inputmode="numeric">
+      <span class="unit">万円</span>
+      </span>
+      </label>
+      <label class="field span-2">
+      <span class="field-label">年金見込額がわかる場合のみ（任意）</span>
+      <span class="input-unit">
+      <input type="number" id="pensionOverride" min="0" step="10" value="0" inputmode="numeric">
+      <span class="unit">万円/年</span>
+      </span>
+      <span class="field-help">「ねんきん定期便」等で確認済みの概算額があれば入力してください。0のままであれば参考モデルを使います。</span>
+      </label>
+      </div>
+      </section>
+      <div class="input-foot">
+      <button class="btn btn-line" id="btnBackToStart">コース選択に戻る</button>
+      <button class="btn btn-primary btn-lg" id="btnCalc">この内容で試算する</button>
+      </div>
+      </div>
+      <!-- 右レール -->
+      <aside class="input-rail" id="inputRail">
+      <div class="rail-card">
+      <h4 class="rail-title">入力中のサマリー</h4>
+      <dl class="rail-list" id="railSummary"></dl>
+      <div class="rail-flow" id="railFlow"></div>
+      <button class="btn btn-primary btn-block" id="btnCalcRail">試算する</button>
+      <p class="rail-note">初期値はデモ用の架空サンプルです。自由に書き換えてください。</p>
+      </div>
+      </aside>
+      </div>
+      </section>
+      <!-- ============================================================
+      画面3：結果
+      ============================================================ -->
+      <section class="screen screen-result" id="screenResult" data-screen-label="03 試算結果" hidden>
+      <div class="result-wrap">
+      <div class="result-head">
+      <div>
+      <p class="eyebrow" id="resEyebrow">コースA｜65歳まで</p>
+      <h2 class="sec-title" id="resTitle">この条件での将来家計</h2>
+      </div>
+      <div class="result-head-actions">
+      <button class="btn btn-line btn-sm" id="btnEditInput">入力を修正する</button>
+      <button class="btn btn-line btn-sm" id="btnPrint">簡易印刷</button>
+      <button class="btn btn-line btn-sm" id="btnMd">FP相談用データ（MD）</button>
+      <button class="btn btn-line btn-sm" id="btnJson">JSON</button>
+      </div>
+      </div>
+      <div id="alertArea"></div>
+      <!-- KPI -->
+      <section class="kpi-row" id="kpiRow" aria-live="polite"></section>
+      <!-- グラフ＋操作 -->
+      <div class="result-grid">
+      <section class="card chart-card">
+      <header class="card-head">
+      <h3 id="chartTitle">金融資産の推移</h3>
+      <div class="legend" id="chartLegend"></div>
+      </header>
+      <div class="chart-host" id="mainChart"></div>
+      <div id="chartTooltip" class="chart-tip" hidden></div>
+      <div class="breakdown-row" id="breakdownRow"></div>
+      </section>
+      <aside class="card control-card" id="controlCard">
+      <header class="card-head">
+      <h3>積立を動かして比べる</h3>
+      </header>
+      <p class="control-lead">スライダーを動かすと、右のグラフと数字がすぐ変わります。</p>
+      <div class="control-block">
+      <div class="control-label">
+      <span><i class="dot dot-dc"></i>企業型DC の掛金（給与減額型）</span>
+      <output id="outDc" class="control-value">0.0 万円</output>
+      </div>
+      <input type="range" id="rangeDc" min="0" max="6" step="0.1" value="0" class="range range-dc" aria-label="企業型DCの掛金">
+      <div class="range-scale"><span>0</span><span>3</span><span>6万円/月</span></div>
+      </div>
+      <div class="control-block">
+      <div class="control-label">
+      <span><i class="dot dot-invest"></i>NISA等の積立額</span>
+      <output id="outNisa" class="control-value">0.0 万円</output>
+      </div>
+      <input type="range" id="rangeNisa" min="0" max="10" step="0.5" value="0" class="range range-invest" aria-label="NISA等の積立額">
+      <div class="range-scale"><span>0</span><span>5</span><span>10万円/月</span></div>
+      </div>
+      <div class="control-block">
+      <div class="control-label"><span>運用利回り（仮定）</span></div>
+      <span class="seg seg-wide" id="segReturn">
+      <button type="button" class="seg-btn" data-val="0">0%</button>
+      <button type="button" class="seg-btn" data-val="2">2%</button>
+      <button type="button" class="seg-btn is-on" data-val="5">5%</button>
+      <button type="button" class="seg-btn" data-val="7">7%</button>
+      </span>
+      <p class="tiny-note">2026-v22の参考シナリオは 悲観2%／標準5%／楽観7%。予測値ではなく仮定です。</p>
+      </div>
+      <div class="control-note" id="dcNote"></div>
+      <div class="compare-mini" id="compareMini"></div>
+      </aside>
+      </div>
+      <!-- 教育費 -->
+      <section class="card wide-card" id="eduCard">
+      <header class="card-head">
+      <h3>教育費の山</h3>
+      <span class="card-hint" id="eduTotalHint"></span>
+      </header>
+      <div class="chart-host chart-host-sm" id="eduChart"></div>
+      <div id="eduSummary" class="edu-summary"></div>
+      </section>
+      <!-- 年金（Bのみ） -->
+      <section class="card wide-card" id="pensionCard" hidden>
+      <header class="card-head">
+      <h3>公的年金の参考推計</h3>
+      <span class="card-hint">仮の加入歴による参考モデル</span>
+      </header>
+      <div id="pensionBody"></div>
+      </section>
+      <!-- 年次テーブル -->
+      <section class="card wide-card">
+      <header class="card-head">
+      <h3>年次のかんたん表</h3>
+      <button class="btn btn-ghost btn-sm" id="btnToggleTable">すべて表示</button>
+      </header>
+      <div class="table-scroll">
+      <table class="year-table" id="yearTable"></table>
+      </div>
+      </section>
+      <!-- 前提 -->
+      <section class="card wide-card assumptions" id="assumptionCard">
+      <header class="card-head"><h3>この試算の前提</h3></header>
+      <div id="assumptionBody"></div>
+      </section>
+      <!-- 相談メモ -->
+      <section class="card wide-card">
+      <header class="card-head">
+      <h3>FPに相談したいこと（任意）</h3>
+      <span class="card-hint">ダウンロードするMDに含まれます</span>
+      </header>
+      <textarea id="consultMemo" rows="3" placeholder="例：教育費のピーク時に預貯金が足りるか不安。DCをいくらにするか迷っている。"></textarea>
+      <p class="tiny-note">家計情報を含むファイルです。送付先を確認し、適切な方法で共有してください。自動送信は行いません。</p>
+      <div class="consult-actions">
+      <button class="btn btn-primary" id="btnMd2">FP相談用データをダウンロード（.md）</button>
+      </div>
+      </section>
+      <p class="disclaimer">本ツールは入力条件にもとづく概算です。将来の収益や資産額を保証するものではなく、税・社会保険の個別判定は行っていません。制度・商品の詳細は企業の制度および最新の公的情報をご確認ください。</p>
+      </div>
+      </section>
+  </div>
+</div></template>
+<!-- 印刷用シート（印刷時のみ表示。ポータルの共通シェルは印刷しない） -->
+<div id="printSheet" class="print-sheet" aria-hidden="true"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
